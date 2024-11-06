@@ -14,6 +14,6 @@ jobs:
         uses: inception-health/otel-export-trace-action@latest
         with:
           otlpEndpoint: https://otlp.eu01.nr-data.net:443/
-          NEW_RELIC_LICENSE_KEY: ${{ secrets.NEW_RELIC_LICENSE_KEY }}
+          otlpHeaders: '{"Content-Type": "application/json", "authorization": "Basic ${{ secrets.NEW_RELIC_LICENSE_KEY }}"}'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           runId: ${{ github.event.workflow_run.id }}
